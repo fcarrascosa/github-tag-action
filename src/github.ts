@@ -37,6 +37,8 @@ export async function compareCommits(baseRef: string, headRef: string) {
     ...context.repo,
     base: baseRef,
     head: headRef,
+  }) || await octokit.repos.listCommits({
+    ...context.repo,
   });
 
   return commits.data.commits;
